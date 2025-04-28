@@ -5,7 +5,7 @@ import { createUser } from '@/lib/apiMethods';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 
-export default function Login() {
+export default function Register() {
 
     const notifyRegisterSuccess = () => toast("Daten erfolgreich übermittelt!");
     const notifyRegisterFailure = () => toast("Daten konnten nicht übermittelt werden.");
