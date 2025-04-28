@@ -9,7 +9,7 @@ export default function Login() {
 
     const notifyRegisterSuccess = () => toast("Daten erfolgreich übermittelt!");
     const notifyRegisterFailure = () => toast("Daten konnten nicht übermittelt werden.");
-    
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
@@ -22,7 +22,7 @@ export default function Login() {
         lastName: '',
         username: '',
         email: '',
-        passwort: ''    
+        passwort: ''
     };
 
     const sendData = async () => {
@@ -34,59 +34,64 @@ export default function Login() {
             return notifyRegisterFailure();
         }
     };
-    
-    return(
+
+    return (
         <>
             <div className='register-box'>
-                <form onSubmit={(e) => {e.preventDefault(); sendData();}}>
+                <form className='register-form' onSubmit={(e) => { e.preventDefault(); sendData(); }}>
                     <input
-                    id='firstName'
-                    type='text'
-                    placeholder='Vorname'
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    required
+                        id='firstName'
+                        type='text'
+                        placeholder='Vorname'
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
                     />
                     <input
-                    id='lastName'
-                    type='text'
-                    placeholder='Nachname'
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    required
+                        id='lastName'
+                        type='text'
+                        placeholder='Nachname'
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        required
                     />
                     <input
-                    id='username'
-                    placeholder='Username'
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
+                        id='username'
+                        type='text'
+                        placeholder='Username'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
                     />
                     <input
-                    id='email'
-                    placeholder='E-Mail'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
+                        id='email'
+                        type='text'
+                        placeholder='E-Mail'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
                     />
                     <input
-                    id='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
+                        id='password'
+                        type='password'
+                        placeholder='Password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
                     <input
-                    id='passwordConfirmation'
-                    placeholder='Confirm Password'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                        id='passwordConfirmation'
+                        placeholder='Confirm Password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <button type='submit'>Submit</button>
-                    <p>
-                        Already registered? <button>Hier einloggen</button>
-                    </p>
                 </form>
+                <div>
+                    <p>
+                        Already registered? <button className='login-here'>Hier einloggen</button>
+                    </p>
+                </div>
             </div>
         </>
     );
