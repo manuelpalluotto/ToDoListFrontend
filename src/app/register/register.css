@@ -1,0 +1,53 @@
+.register-box {
+    width: 700px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 35px;
+    border: 1px solid white;
+    padding: 0.1rem;
+    background-color: #272727;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 35px;
+    height: 100%;
+    padding: 1rem;
+}
+
+input {
+   padding: 0.35rem;
+   border: none;
+   border-bottom: 1px dotted white;
+   background-color: #272727;
+}
+
+input:focus {
+    outline: none;
+}
+
+.login-here {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-here:hover {
+    color: rgb(33, 68, 210);
+}
+
+.below--form-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    justify-content: space-between;
+    padding-top: 0.2rem;
+}
+
+.below--form-p {
+    padding-top: 0.4rem;
+}

@@ -1,10 +1,10 @@
-import Register from "@/components/Register";
+import Registerform from "@/components/Registerform";
 
 
 export default function Home() {
   return (
     <>
-      <Register />
+      <Registerform />
     </>
   );
 }

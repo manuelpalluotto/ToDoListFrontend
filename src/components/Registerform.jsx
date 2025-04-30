@@ -1,11 +1,13 @@
-'use client';
-
-import '@/css/login.css';
+'use client'
+import '@/app/register/register.css';
 import { createUser } from '@/lib/apiMethods';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import ManuButton from './ManuButton';
+import Navbar from './Navbar';
 
-export default function Register() {
+
+export default function Registerform() {
 
     const notifyRegisterSuccess = () => toast("Daten erfolgreich übermittelt!");
     const notifyRegisterFailure = () => toast("Daten konnten nicht übermittelt werden.");
@@ -15,6 +17,7 @@ export default function Register() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmedPassword, setConfirmedPassword] = useState('');
 
 
     const User = {
@@ -22,7 +25,8 @@ export default function Register() {
         lastName: '',
         username: '',
         email: '',
-        passwort: ''
+        passwort: '',
+        confirmedPassword: ''
     };
 
     const sendData = async () => {
@@ -37,61 +41,70 @@ export default function Register() {
 
     return (
         <>
+            <Navbar />
             <div className='register-box'>
-                <form className='register-form' onSubmit={(e) => { e.preventDefault(); sendData(); }}>
+                <form className='register-form' method='post' onSubmit={(e) => { e.preventDefault(); sendData(); }}>
                     <input
-                        id='firstName'
+                        id='fake'
                         type='text'
                         placeholder='Vorname'
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                         required
+                        autoComplete='nope'
                     />
                     <input
-                        id='lastName'
+                        id='fake'
                         type='text'
                         placeholder='Nachname'
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                         required
+                        autoComplete='nope'
                     />
                     <input
-                        id='username'
+                        id='fake'
                         type='text'
                         placeholder='Username'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
+                        autoComplete='off'
                     />
                     <input
-                        id='email'
+                        id='fake'
                         type='text'
                         placeholder='E-Mail'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        autoComplete='nope'
                     />
                     <input
-                        id='password'
+                        id='fake'
                         type='password'
                         placeholder='Password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        autoComplete='off'
                     />
                     <input
-                        id='passwordConfirmation'
+                        id='fake'
+                        type='password'
                         placeholder='Confirm Password'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={confirmedPassword}
+                        required
+                        autoComplete='off'
+                        onChange={(e) => setConfirmedPassword(e.target.value)}
                     />
-                    <button type='submit'>Submit</button>
+                    <div className='below--form-container'>
+                        <ManuButton />
+                        <p className='below--form-p'>
+                            Already registered? <button className='login-here'>Login Here</button>
+                        </p>
+                    </div>
                 </form>
-                <div>
-                    <p>
-                        Already registered? <button className='login-here'>Hier einloggen</button>
-                    </p>
-                </div>
             </div>
         </>
     );

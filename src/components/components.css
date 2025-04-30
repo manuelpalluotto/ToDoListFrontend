@@ -1,0 +1,22 @@
+/*#region ManuButton*/
+.manu-button {
+    background-color: rgb(33, 68, 210);
+    border: none;
+    padding: 0.3rem;
+    border-radius: 15px;
+    min-width: 100px;
+}
+/*#endregion*/
+/*#region Navbar*/
+.navbar-container {
+    display: flex;
+    padding: 0.75rem;
+}
+
+.title {
+    font-size: 1.25rem;
+}
+/*#endregion*/
+/*#region sidenavlinks*/
+
+/*#endregion*/
