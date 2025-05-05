@@ -3,9 +3,13 @@
     margin: auto;
     overflow: hidden;
     border-radius: 35px;
-    border: 1px solid white;
+    border: 1px solid var(--youtube-font);
     padding: 0.1rem;
-    background-color: #272727;
+    background-color: var(--youtube-black);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .register-form {
@@ -20,8 +24,8 @@
 input {
    padding: 0.35rem;
    border: none;
-   border-bottom: 1px dotted white;
-   background-color: #272727;
+   border-bottom: 1px dotted var(--youtube-font);
+   background-color: var(--youtube-black);
 }
 
 input:focus {
@@ -50,4 +54,23 @@ input:focus {
 
 .below--form-p {
     padding-top: 0.4rem;
+}
+
+.manu-button {
+    background-color: rgb(33, 68, 210);
+    border: none;
+    padding: 0.3rem;
+    border-radius: 15px;
+    min-width: 100px;
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.manu-button:active {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.3);
+}
+
+.manu-button::after {
+    animation: ripple 0.4s ease-out;
 }

@@ -13,6 +13,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --youtube-gray: #272727;
+  --youtube-black: #0f0f0f;
+  --youtube-font: #f1f1f1;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
