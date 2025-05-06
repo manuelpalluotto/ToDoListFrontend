@@ -33,14 +33,18 @@ export default function Registerform() {
             confirmedPassword
         };
 
+        if (password === confirmedPassword) {
 
-        try {
-            await createUser(User);
-            notifyRegisterSuccess();
-            router.push('/login');
-        }
-        catch {
-            return notifyRegisterFailure();
+            try {
+                await createUser(User);
+                notifyRegisterSuccess();
+                router.push('/login');
+            }
+            catch {
+                return notifyRegisterFailure();
+            }
+        } else {
+            toast('Failed. Check Password.');
         }
     };
 
