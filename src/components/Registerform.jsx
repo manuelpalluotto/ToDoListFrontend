@@ -3,10 +3,8 @@ import '@/app/register/register.css';
 import { createUser } from '@/lib/apiMethods';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import ManuButton from './ManuButton';
-import Navbar from './Navbar';
-import NavLinksBar from './NavLinksBar';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 export default function Registerform() {
@@ -21,6 +19,8 @@ export default function Registerform() {
     const [password, setPassword] = useState('');
     const [confirmedPassword, setConfirmedPassword] = useState('');
     const [login, setLogin] = useState(false);
+
+    const router = useRouter();
 
     const sendData = async () => {
         
@@ -37,7 +37,7 @@ export default function Registerform() {
         try {
             await createUser(User);
             notifyRegisterSuccess();
-            
+            router.push('/login');
         }
         catch {
             return notifyRegisterFailure();

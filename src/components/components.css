@@ -4,7 +4,8 @@
 /*#region Navbar*/
 .navbar-container {
     display: flex;
-    padding: 1rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
     position: absolute;
     top: 0;
 }
@@ -24,7 +25,7 @@
     color: var(--youtube-font);
 }
 
-.dashboard-container, .projects-container, .all--tickets-container {
+.dashboard-container, .projects-container, .all--tickets-container, .admin--area-container{
     background-color: var(--youtube-gray);
     padding: 0.5rem;
     border-radius: 10px;

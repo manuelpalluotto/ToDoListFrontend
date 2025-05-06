@@ -5,7 +5,8 @@ export default function NavLinksBar() {
         <div className='navlinks-container'>
             <div className='dashboard-container'><Link href='/dashboard'>Dashboard</Link></div>
             <div className='projects-container'><Link href='/projects'>Your Projects</Link></div>
-            <div className='all--tickets-container'><Link href='tickets'>All Tickets</Link></div>
+            <div className='all--tickets-container'><Link href='/tickets'>All Tickets</Link></div>
+            <div className='admin--area-container'><Link href='/admin'>Admin Area</Link></div>
         </div>
     );
 }

@@ -1,4 +1,3 @@
-'use client';
 import './components.css';
 import { FaCode } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";

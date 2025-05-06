@@ -5,34 +5,32 @@ import '@/app/login/login.css';
 import Link from 'next/link';
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
 
-    const [loggedIn, setLoggedIn] = useState(false);
 
-    const sendData = async () => {
+        const sendData = async () => {
+            const User = {
+                username,
+                password
+            }
+            console.log(User);
+            try {
+                await login(User.username, User.password);
+                toast('You are being logged in...');
+                router.push('/dashboard');
+            } catch {
+                toast('Login failed. Maybe bad Username Password combination?');
+                return;
+            }
+        };
 
-        const User = {
-            username,
-            password
-        }
-
-        console.log(User);
-
-        try {
-            await login(User.username, User.password);
-            toast('You are being logged in...');
-            setLoggedIn(true);
-        } catch {
-            toast('Login failed. Maybe bad Username Password combination?');
-            setLoggedIn(false);
-            return;
-        }
-    };
-
+        
     return (
         <>
             <ToastContainer />
@@ -53,7 +51,7 @@ export default function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className='below--form-div'>
-                        <button className='manu-button' type='submit'><Link href={loggedIn ? '/dashboard' : '/login'}>Login</Link></button>
+                        <button className='manu-button' type='submit'>Submit</button>
                         <p className='below--formP'>
                             No account yet? <Link href='/register' className='register-here'>Register here</Link>
                         </p>

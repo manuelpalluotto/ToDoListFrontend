@@ -13,7 +13,7 @@ export async function createUser(User) {
 export async function login(username, password) {
     const response = await apiClient.post('/auth/login', {username, password})
     const token = response.data.token;
-    localStorage.setItem(token);
+    localStorage.setItem('token', token);
     return token;
 }
 
