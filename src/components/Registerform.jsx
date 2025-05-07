@@ -44,6 +44,7 @@ export default function Registerform() {
                 return notifyRegisterFailure();
             }
         } else {
+            
             toast('Failed. Check Password.');
         }
     };
