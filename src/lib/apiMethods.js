@@ -26,24 +26,21 @@ export function decodeToken(token) {
     }
 }
 
-export function getCurrentUser() {
+export async function getCurrentUser() {
     if(typeof window === 'undefined') {
         return undefined;
     }
 
-    const token = localStorage.getItem('token');
-    if (!token) {
-        return undefined;
-    }
-
-    const decoded = decodeToken(token);
-    if (!decoded?.username) {
-        return undefined;
-    }
-    return decoded.username;
+    const username = await apiClient.get('users/getCookie');
+    return username;
 }
 
 export async function getUserId(username) {
     const response = await apiClient.post('/users/getId', {username});
+    return response.data;
+}
+
+export async function getRoleByUsername(username) {
+    const response = await apiClient.get('/users/getRole');
     return response.data;
 }
