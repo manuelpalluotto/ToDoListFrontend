@@ -12,8 +12,38 @@ export async function createUser(User) {
 
 export async function login(username, password) {
     const response = await apiClient.post('/auth/login', {username, password})
-    const token = response.data.token;
-    localStorage.setItem('token', token);
-    return token;
+    return response.data;
 }
 
+
+export function decodeToken(token) {
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        return { username: payload.sub };
+    } catch (error) {
+        console.error('Invalid token:', error);
+        return null;
+    }
+}
+
+export function getCurrentUser() {
+    if(typeof window === 'undefined') {
+        return undefined;
+    }
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+        return undefined;
+    }
+
+    const decoded = decodeToken(token);
+    if (!decoded?.username) {
+        return undefined;
+    }
+    return decoded.username;
+}
+
+export async function getUserId(username) {
+    const response = await apiClient.post('/users/getId', {username});
+    return response.data;
+}

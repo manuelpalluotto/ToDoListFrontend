@@ -6,8 +6,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-
 export default function Registerform() {
+
+
 
     const notifyRegisterSuccess = () => toast("Daten erfolgreich übermittelt!");
     const notifyRegisterFailure = () => toast("Daten konnten nicht übermittelt werden.");
@@ -40,11 +41,11 @@ export default function Registerform() {
                 notifyRegisterSuccess();
                 router.push('/login');
             }
-            catch {
+            catch (error){
+                console.error('error', error);
                 return notifyRegisterFailure();
             }
         } else {
-            
             toast('Failed. Check Password.');
         }
     };
