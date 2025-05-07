@@ -1,0 +1,33 @@
+/*#region ManuButton*/
+
+/*#endregion*/
+/*#region Navbar*/
+.navbar-container {
+    display: flex;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    position: absolute;
+    top: 0;
+}
+
+.title {
+    font-size: 1.25rem;
+    color: var(--youtube-font);
+}
+/*#endregion*/
+/*#region sidenavlinks*/
+.navlinks-container {
+    position: absolute;
+    top: 3rem;
+    display: flex;
+    gap: 1rem;
+    padding-inline: 1rem;
+    color: var(--youtube-font);
+}
+
+.dashboard-container, .projects-container, .all--tickets-container, .admin--area-container{
+    background-color: var(--youtube-gray);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+/*#endregion*/
