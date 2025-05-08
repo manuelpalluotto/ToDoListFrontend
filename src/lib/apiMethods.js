@@ -15,24 +15,9 @@ export async function login(username, password) {
     return response.data;
 }
 
-
-export function decodeToken(token) {
-    try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        return { username: payload.sub };
-    } catch (error) {
-        console.error('Invalid token:', error);
-        return null;
-    }
-}
-
-export async function getCurrentUser() {
-    if(typeof window === 'undefined') {
-        return undefined;
-    }
-
-    const username = await apiClient.get('users/getCookie');
-    return username;
+export async function getUsername() {
+    const response = await apiClient.get('users/getUsernameFromCookie');
+    return response.data;
 }
 
 export async function getUserId(username) {
@@ -42,5 +27,20 @@ export async function getUserId(username) {
 
 export async function getRoleByUsername(username) {
     const response = await apiClient.get('/users/getRole');
+    return response.data;
+}
+
+export async function getFirstName() {
+    const response = await apiClient.get('/users/getFirstName');
+    return response.data;
+}
+
+export async function getLastName() {
+    const response = await apiClient.get('/users/getLastName');
+    return response.data;
+}
+
+export async function getEmail() {
+    const response = await apiClient.get('/users/getEmail');
     return response.data;
 }
