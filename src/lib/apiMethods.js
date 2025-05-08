@@ -1,17 +1,17 @@
 import apiClient from './apiClient';
 
 export async function getUsers() {
-    const response = await apiClient.get('/users');
+    const response = await apiClient.get('/users/all');
     return response.data;
 };
 
 export async function createUser(User) {
-    const response = await apiClient.post('/auth/register', User);
+    const response = await apiClient.post('/auth/register', { User });
     return response.data;
 }
 
 export async function login(username, password) {
-    const response = await apiClient.post('/auth/login', {username, password})
+    const response = await apiClient.post('/auth/login', { username, password })
     return response.data;
 }
 
@@ -21,26 +21,26 @@ export async function getUsername() {
 }
 
 export async function getUserId(username) {
-    const response = await apiClient.post('/users/getId', {username});
+    const response = await apiClient.post('/users/getId', { username });
     return response.data;
 }
 
 export async function getRoleByUsername(username) {
-    const response = await apiClient.get('/users/getRole');
+    const response = await apiClient.post('/users/getRole', { username });
     return response.data;
 }
 
-export async function getFirstName() {
-    const response = await apiClient.get('/users/getFirstName');
+export async function getFirstName(username) {
+    const response = await apiClient.post('/users/getFirstName', { username });
     return response.data;
 }
 
-export async function getLastName() {
-    const response = await apiClient.get('/users/getLastName');
+export async function getLastName(username) {
+    const response = await apiClient.post('/users/getLastName', { username });
     return response.data;
 }
 
-export async function getEmail() {
-    const response = await apiClient.get('/users/getEmail');
+export async function getEmail(username) {
+    const response = await apiClient.get('/users/getEmail', { username });
     return response.data;
 }
