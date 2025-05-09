@@ -1,56 +1,52 @@
 'use client'
-
+import '@/app/admin/admin.css';
 import { getUsers } from "@/lib/apiMethods";
 import { useEffect, useState } from "react";
 
 export default function AdminUserTable() {
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [userName, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [role, setRole] = useState('');
+    const [users, setUsers] = useState([]);
+    const [isEditing, setIsEditing] = useState(false);
 
-    const [Users, setUsers] = useState([]);
-
-    const User = {
-        firstName,
-        lastName,
-        userName,
-        email,
-        role
-    }
 
     useEffect(() => {
-        const fetchUsers = async () => {
+
+        const fetchData = async () => {
             const response = await getUsers();
             setUsers(response);
-            console.log(response)
-            setFirstName(response.data.firstName);
+        };
+        fetchData();
+    }, []);
 
-        }
-
-        fetchUsers();
-    }, [])
-
-    useEffect( () => {
-        console.log(firstName);
-    }, [firstName])
 
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                    <th>E-Mail</th>
-                    <th>Role</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+        <div className='table-container'>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>E-Mail</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map(user => (
+                        <tr key={user.username}>
+                            <td>{user.username}</td>
+                            <td>{user.firstName}</td>
+                            <td>{user.lastName}</td>
+                            <td>{user.email}</td>
+                            <div onDoubleClick={() => setIsEditing(true)}>
+                                {isEditing ? (
+                                    <input value={ user.role } onChange
+                                )}
+                            </div>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     );
 }

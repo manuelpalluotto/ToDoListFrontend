@@ -12,8 +12,9 @@ export default function Admin() {
         <>
             <Navbar />
             <NavLinksBar />
-            <div className='all-users'>All Users</div>
+            <div className='all-users'>All Users
             <AdminUserTable />
+            </div>
         </>
     );
 }
