@@ -1,13 +1,21 @@
 'use client'
 import '@/app/admin/admin.css';
-import { getUsers } from "@/lib/apiMethods";
+import { changeRole, getUsers } from "@/lib/apiMethods";
+import Link from 'next/link';
 import { useEffect, useState } from "react";
 
 export default function AdminUserTable() {
 
     const [users, setUsers] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
+    const [newRole, setNewRole] = useState('');
+    
 
+
+    const sendNewRole = async (username, newRole) => {
+        const response = await changeRole(username, newRole);
+
+    }
 
     useEffect(() => {
 
@@ -17,6 +25,12 @@ export default function AdminUserTable() {
         };
         fetchData();
     }, []);
+
+    useEffect( () => {
+        const test = () => {
+
+        };
+    }, [isEditing]);
 
 
     return (
@@ -33,16 +47,12 @@ export default function AdminUserTable() {
                 </thead>
                 <tbody>
                     {users.map(user => (
-                        <tr key={user.username}>
-                            <td>{user.username}</td>
-                            <td>{user.firstName}</td>
-                            <td>{user.lastName}</td>
-                            <td>{user.email}</td>
-                            <div onDoubleClick={() => setIsEditing(true)}>
-                                {isEditing ? (
-                                    <input value={ user.role } onChange
-                                )}
-                            </div>
+                        <tr key={ user.username }>
+                            <td><Link href={`/userPage/${user.username}`}>{ user.username }</Link></td>
+                            <td>{ user.firstName }</td>
+                            <td>{ user.lastName }</td>
+                            <td>{ user.email }</td>
+                            <td>{ user.role }</td>
                         </tr>
                     ))}
                 </tbody>

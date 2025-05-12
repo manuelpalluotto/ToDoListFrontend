@@ -33,4 +33,16 @@ table {
     background-color: #f1f1f1;
     color: var(--youtube-black);
   }
+
+  input {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  .user-role-div {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
   

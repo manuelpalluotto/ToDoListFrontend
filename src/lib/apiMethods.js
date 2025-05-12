@@ -46,6 +46,11 @@ export async function getEmail(username) {
 }
 
 export async function changeRole(username, role) {
-    const response = await apiClient.put('users/changeRole', { username, role });
+    const response = await apiClient.put('/users/changeRole', { username, role });
+    return response.data;
+}
+
+export async function getFullUser(username) {
+    const response = await apiClient.post('/users/getFullUser', { username });
     return response.data;
 }
