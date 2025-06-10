@@ -4,8 +4,6 @@ import NavLinksBar from "@/components/NavLinksBar";
 
 export default function LoginPage() {
 
-
-
     return(
         <>
         <Navbar />

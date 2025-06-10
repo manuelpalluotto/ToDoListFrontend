@@ -19,7 +19,6 @@ export default function Registerform() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmedPassword, setConfirmedPassword] = useState('');
-    const [login, setLogin] = useState(false);
 
     const router = useRouter();
 
@@ -29,14 +28,14 @@ export default function Registerform() {
             firstName,
             lastName,
             username,
-            email,
             password,
-            confirmedPassword
+            email
         };
 
         if (password === confirmedPassword) {
 
             try {
+                console.log(User);
                 await createUser(User);
                 notifyRegisterSuccess();
                 router.push('/login');

@@ -1,12 +1,12 @@
 import apiClient from './apiClient';
 
 export async function getUsers() {
-    const response = await apiClient.get('/users/all');
+    const response = await apiClient.get('/users/admin/all');
     return response.data;
 };
 
 export async function createUser(User) {
-    const response = await apiClient.post('/auth/register', { User });
+    const response = await apiClient.post('/auth/register', User );
     return response.data;
 }
 
@@ -26,7 +26,7 @@ export async function getUserId(username) {
 }
 
 export async function getRoleByUsername(username) {
-    const response = await apiClient.post('/users/getRole', { username });
+    const response = await apiClient.post('/users/getRole',  username );
     return response.data;
 }
 
@@ -52,5 +52,10 @@ export async function changeRole(username, role) {
 
 export async function getFullUser(username) {
     const response = await apiClient.post('/users/getFullUser', { username });
+    return response.data;
+}
+
+export async function getAuth() {
+    const response = await apiClient.get('/auth/status');
     return response.data;
 }

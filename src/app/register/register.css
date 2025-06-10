@@ -26,6 +26,7 @@ input {
    border: none;
    border-bottom: 1px dotted var(--youtube-font);
    background-color: var(--youtube-black);
+   color: var(--youtube-font);
 }
 
 input:focus {
