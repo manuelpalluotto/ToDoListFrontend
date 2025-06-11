@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import { getFullUser } from "@/lib/apiMethods";
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 export default function UserPage() {
     const params = useParams();
@@ -35,6 +36,7 @@ export default function UserPage() {
 
 
     return (
+        <ProtectedRoute>
         <div>
             <Navbar />
             <table>
@@ -76,6 +78,7 @@ export default function UserPage() {
             </table>
             <button onClick={() => setEditing(true)}> Edit</button>
         </div>
+        </ProtectedRoute>
     );
 }
 

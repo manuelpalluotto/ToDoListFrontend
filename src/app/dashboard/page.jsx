@@ -1,13 +1,16 @@
 'use client';
 import Navbar from "@/components/Navbar";
 import NavLinksBar from "@/components/NavLinksBar";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 export default function DashboardPage() {
 
     return (
         <>
-            <Navbar />
-            <NavLinksBar />
+            <ProtectedRoute>
+                <Navbar />
+                <NavLinksBar />
+            </ProtectedRoute>
         </>
     );
 }

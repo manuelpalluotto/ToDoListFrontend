@@ -4,10 +4,10 @@ import NavLinksBar from "@/components/NavLinksBar";
 
 export default function LoginPage() {
 
-    return(
+    return (
         <>
-        <Navbar />
-        <Login />
+            <Navbar />
+            <Login />
         </>
     );
 

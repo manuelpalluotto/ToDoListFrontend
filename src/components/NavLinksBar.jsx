@@ -43,8 +43,8 @@ export default function NavLinksBar() {
             <div className='dashboard-container'><Link href='/dashboard'>Dashboard from { username }</Link></div>
             <div className='projects-container'><Link href='/projects'>Your Projects with role { role }</Link></div>
             <div className='all--tickets-container'><Link href='/tickets'>All Tickets</Link></div>
-            <div className='admin--area-container'><Link href='/admin'>Admin Area</Link></div>
-            {/* <div className='dashboard-container'><button onClick={() => fetchRole(username)}>Rollen Laden</button></div> */}
+            {role === 'ADMIN' && <div className='admin--area-container'><Link href='/admin'>Admin Area</Link></div>}
+            <div className='all--tickets-container'><Link href='/projects'>All Projects</Link></div>
         </div>
     );
 }
