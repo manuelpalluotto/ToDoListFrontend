@@ -2,37 +2,48 @@ import { useState } from "react";
 import TagsInput from 'react-tagsinput';
 import 'react-tagsinput/react-tagsinput.css';
 import '@/app/projects/projects.css';
+import { addProject, getFullUser } from "@/lib/apiMethods";
 
 export default function AddProject() {
 
-    const [name, setName] = useState('');
+    const [title, setName] = useState('');
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState('');
-    const [category, setCategory] = useState('');
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
-    const [users, setUsers] = useState([]);
-    const [tickets, setTickets] = useState([]);
+    const [username, setUsername] = useState([]);
 
     const Project = {
-        name,
+        title,
         description,
         status,
-        category,
         start,
         end,
-        users,
-        tickets
+        username
+    };
+
+
+
+    const handleSubmit = async (Project) => {
+        try {
+            const res = await addProject(Project);
+            if (res.ok) {
+                alert('res.ok');
+            }
+            
+        } catch (error) {
+            alert(error);
+        }
     };
 
     return (
         <div className='projects-box'>
-            <form className='projects-form'>
+            <form onSubmit={(e) => {e.preventDefault(); handleSubmit(Project);}} className='projects-form'>
                 <input
-                    id='name'
+                    id='title'
                     type='text'
-                    placeholder='Projectname'
-                    value={name}
+                    placeholder='Project-Title'
+                    value={title}
                     onChange={(e) => setName(e.target.value)}
                     required
                 />
@@ -51,13 +62,6 @@ export default function AddProject() {
                     onChange={(e) => setStatus(e.target.value)}
                 />
                 <input
-                    id='category'
-                    type='text'
-                    placeholder='Project-Category'
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                />
-                <input
                     id='start'
                     type='date'
                     placeholder='Project-Starttime'
@@ -73,16 +77,11 @@ export default function AddProject() {
                 />
                 <TagsInput
                     id='users'
-                    value={users}
-                    onChange={setUsers}
+                    value={ username }
+                    onChange={ setUsername }
                     placeholder='Add Users and press Enter'
                 />
-                <TagsInput
-                    id='tickets'
-                    value={tickets}
-                    onChange={setTickets}
-                    placeholder='Add Tickets and press Enter'
-                />
+                <button type='submit'>Submit</button>
             </form>
         </div>
     );

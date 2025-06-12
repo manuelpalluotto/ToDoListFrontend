@@ -60,6 +60,7 @@ export async function getAuth() {
     return response.data;
 }
 
-export async function addTicket() {
-    
+export async function addProject(Project) {
+    const response = await apiClient.post('/projects/save', Project);
+    return response.data;
 }

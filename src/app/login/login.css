@@ -40,6 +40,7 @@ input {
     border-bottom: 1px dotted var(--youtube-font);
     background-color: var(--youtube-black);
     border-radius: 10px;
+    color: var(--youtube-font);
 }
 
 input:focus {

@@ -5,13 +5,13 @@ import '@/app/login/login.css';
 import Link from 'next/link';
 import { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import { useRouter } from 'next/navigation';
 
 export default function Login() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
 
 
         const sendData = async () => {
@@ -23,7 +23,7 @@ export default function Login() {
             try {
                 await login(User.username, User.password);
                 toast('You are being logged in...');
-                router.push('/dashboard');
+                window.location.href = '/dashboard';
             } catch {
                 toast('Login failed. Maybe bad Username Password combination?');
                 return;
