@@ -18,7 +18,7 @@ export default function ProjectDetail() {
             } catch (error) {
                 alert (error);
             }
-
+            console.log(projectId);
             fetchData(projectId);
         };
     }, [])
