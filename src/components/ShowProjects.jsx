@@ -6,12 +6,13 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { fetchProjects } from "@/lib/apiMethods";
+import { useRouter } from "next/navigation";
 
 export default function ShowProjects() {
 
     //hier alle projekte einspeichern
     const [projects, setProjects] = useState([]);
-
+    const router = useRouter();
 
     //dann hier beim initial load die daten fetchen
     useEffect(() => {
@@ -56,7 +57,7 @@ export default function ShowProjects() {
 
     //diese function wird immer ausgeführt, wenn ein datum angeklickt wird
     const handleClick = (info) => {
-        alert(`Project: ${info.event.title}`);
+        router.push(`/projects/${info.event.id}`);
     };
 
 
