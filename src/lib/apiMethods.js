@@ -6,7 +6,7 @@ export async function getUsers() {
 };
 
 export async function createUser(User) {
-    const response = await apiClient.post('/auth/register', User );
+    const response = await apiClient.post('/auth/register', User);
     return response.data;
 }
 
@@ -26,7 +26,7 @@ export async function getUserId(username) {
 }
 
 export async function getRoleByUsername(username) {
-    const response = await apiClient.post('/users/getRole',  username );
+    const response = await apiClient.post('/users/getRole', username);
     return response.data;
 }
 
@@ -69,3 +69,8 @@ export async function fetchProjects() {
     const response = await apiClient.get('/projects/show');
     return response.data;
 }
+
+export async function getProjectById(id) {
+    const response = await apiClient.post('/projects/getById', { id });
+    return response.data;
+} 
