@@ -1,8 +1,7 @@
 import { useState } from "react";
-import TagsInput from 'react-tagsinput';
 import 'react-tagsinput/react-tagsinput.css';
 import '@/app/projects/projects.css';
-import { addProject, getFullUser } from "@/lib/apiMethods";
+import { addProject } from "@/lib/apiMethods";
 
 export default function AddProject() {
 

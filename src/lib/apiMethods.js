@@ -64,3 +64,8 @@ export async function addProject(Project) {
     const response = await apiClient.post('/projects/save', Project);
     return response.data;
 }
+
+export async function fetchProjects() {
+    const response = await apiClient.get('/projects/show');
+    return response.data;
+}

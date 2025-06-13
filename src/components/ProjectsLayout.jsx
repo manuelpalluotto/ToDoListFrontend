@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import AddProject from "./AddProject";
+import ShowProjects from "./ShowProjects";
 
 export default function ProjectsLayout() {
 
@@ -13,6 +14,7 @@ export default function ProjectsLayout() {
             <div className='add-container'>
                 <div className='add-container-title'><button className='add-project-button' onClick={() => setEditing(!editing)}> + Add Project</button></div>
                 {editing && <AddProject />}
+            <ShowProjects />
             </div>
         </>
     );

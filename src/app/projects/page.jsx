@@ -6,7 +6,7 @@ import ProjectsLayout from "@/components/ProjectsLayout";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 export default function ProjectsPage() {
-    return(
+    return (
         <ProtectedRoute>
             <Navbar />
             <NavLinksBar />
