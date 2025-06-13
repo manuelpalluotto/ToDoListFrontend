@@ -6,20 +6,18 @@ import { addProject, getFullUser } from "@/lib/apiMethods";
 
 export default function AddProject() {
 
-    const [title, setName] = useState('');
-    const [description, setDescription] = useState('');
+    const [projectTitle, setProjectTitle] = useState('');
+    const [projectDescription, setProjectDescription] = useState('');
     const [status, setStatus] = useState('');
-    const [start, setStart] = useState('');
-    const [end, setEnd] = useState('');
-    const [username, setUsername] = useState([]);
+    const [projectStart, setProjectStart] = useState('');
+    const [projectEnd, setProjectEnd] = useState('');
 
     const Project = {
-        title,
-        description,
+        projectTitle,
+        projectDescription,
         status,
-        start,
-        end,
-        username
+        projectStart,
+        projectEnd,
     };
 
 
@@ -40,19 +38,19 @@ export default function AddProject() {
         <div className='projects-box'>
             <form onSubmit={(e) => {e.preventDefault(); handleSubmit(Project);}} className='projects-form'>
                 <input
-                    id='title'
+                    id='projectTitle'
                     type='text'
                     placeholder='Project-Title'
-                    value={title}
-                    onChange={(e) => setName(e.target.value)}
+                    value={projectTitle}
+                    onChange={(e) => setProjectTitle(e.target.value)}
                     required
                 />
                 <input
-                    id='description'
+                    id='projectDescription'
                     type='text'
                     placeholder='Project-Description'
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    value={projectDescription}
+                    onChange={(e) => setProjectDescription(e.target.value)}
                 />
                 <input
                     id='status'
@@ -62,24 +60,18 @@ export default function AddProject() {
                     onChange={(e) => setStatus(e.target.value)}
                 />
                 <input
-                    id='start'
+                    id='projectStart'
                     type='date'
                     placeholder='Project-Starttime'
-                    value={start}
-                    onChange={(e) => setStart(e.target.value)}
+                    value={projectStart}
+                    onChange={(e) => setProjectStart(e.target.value)}
                 />
                 <input
-                    id='end'
+                    id='projectEnd'
                     type='date'
                     placeholder='Project-Endtime'
-                    value={end}
-                    onChange={(e) => setEnd(e.target.value)}
-                />
-                <TagsInput
-                    id='users'
-                    value={ username }
-                    onChange={ setUsername }
-                    placeholder='Add Users and press Enter'
+                    value={projectEnd}
+                    onChange={(e) => setProjectEnd(e.target.value)}
                 />
                 <button type='submit'>Submit</button>
             </form>
