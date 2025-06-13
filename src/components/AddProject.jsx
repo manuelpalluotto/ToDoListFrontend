@@ -35,7 +35,7 @@ export default function AddProject() {
 
     return (
         <div className='projects-box'>
-            <form onSubmit={(e) => {e.preventDefault(); handleSubmit(Project);}} className='projects-form'>
+            <form onSubmit={() => handleSubmit(Project)} className='projects-form'>
                 <input
                     id='projectTitle'
                     type='text'

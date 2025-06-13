@@ -34,18 +34,24 @@ export default function ShowProjects() {
             case 'PENDING': return '#ffffff'; //white
             case 'IN_PROGRESS': return '#2196f3'; //blue
             case 'COMPLETED': return '#4caf50'; //green
+            default: return '#9e9e9e';
         }
     };
 
 
     //dann muss ich das formattieren, denn FullCalendar erwartet ein gewisses Format
-    const events = projects.map(project => ({
-        id: projects.id,
+    const events = projects.map(project => {
+        console.log(`Creating event for project: ${project.id} - ${project.projectTitle} (${project.status})`);
+        return {
+        id: project.projectId,
         title: project.projectTitle,
         start: project.projectStart,
-        end: project.projectEnd,
+        end: project.projectEnd || project.projectStart,
         backgroundColor: getStatusColor(project.status),
-    }));
+        allDay: true
+    }});
+
+    console.log('Final events array: ', events);
 
 
     //diese function wird immer ausgeführt, wenn ein datum angeklickt wird
@@ -74,6 +80,7 @@ export default function ShowProjects() {
                     events={events}
                     eventClick={handleClick}
                     height='auto'
+                    eventDisplay='block'
                 />
             </div>
         </>
