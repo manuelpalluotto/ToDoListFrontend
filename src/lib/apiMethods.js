@@ -71,6 +71,21 @@ export async function fetchProjects() {
 }
 
 export async function getProjectById(id) {
-    const response = await apiClient.post('/projects/getById', { id });
+    const response = await apiClient.post('/projects/getById', id);
     return response.data;
 } 
+
+export function convertedStatus(status) {
+        switch(status) {
+            case 'ADDED': return 'Added';
+            case 'IN_PROGRESS': return 'In Progress';
+            case 'PENDING': return 'Pending';
+            case 'COMPLETED': return 'Completed';
+            default: return 'Unknown';
+        }
+    };
+
+    export async function updateDate(ProjectUpdateDateDTO) {
+        const response = await apiClient.post('/projects/updateDate', ProjectUpdateDateDTO);
+        return response;
+    }

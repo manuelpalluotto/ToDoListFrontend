@@ -17,7 +17,6 @@ export function UserProvider({ children }) {
         const checkLoginStatus = async () => {
         try {
             const response = await getAuth();
-            console.log('Auth response: ', response)
             setAuthStatus(response);
         } catch (error) {
             console.error(error);

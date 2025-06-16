@@ -9,7 +9,6 @@ export default function HomeRedirect() {
 
   useEffect(() => {
     if (!loading) {
-      console.log('Auth status: ', authStatus);
       if (isAuthorized) {
         router.push('/dashboard');
       } else {

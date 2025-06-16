@@ -24,7 +24,6 @@ export default function AddProject() {
     const handleSubmit = async (Project) => {
         try {
             const res = await addProject(Project);
-            console.log(Project);
             if (res.ok) {
                 alert('res.ok');
             }

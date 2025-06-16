@@ -14,7 +14,6 @@ export default function NavLinksBar() {
             try {
                 const response = await getUsername();
                 setUsername(response);
-                console.log(response);
             } catch (error) {
                 console.error(error);
             }
@@ -28,7 +27,7 @@ export default function NavLinksBar() {
         try {
             const response = await getRoleByUsername(username);
             setRole(response);
-            console.log(response);
+            (response);
         } catch (error) {
             console.error(error);
         }
