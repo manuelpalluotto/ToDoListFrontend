@@ -8,28 +8,22 @@ export default function ProjectDetail() {
     const projectId = params.id;
     const [project, setProject] = useState(null);
 
-    useEffect( () => {
+    useEffect(() => {
         const fetchData = async (id) => {
             try {
-                console.log('ID LOG: ', id);
+                console.log(id);
                 const res = await getProjectById(id);
-                console.log('NEUER LOG: ', res);
                 setProject(res);
             } catch (error) {
-                alert (error);
+                alert(error);
             }
-            console.log(projectId);
-            fetchData(projectId);
         };
+        fetchData(projectId);
     }, [])
 
-    return(
+    return (
         <div>
-            {/* <div>title: { project.projectTitle }</div>
-            <div>title: { project.status }</div>
-            <div>title: { project.projectDescription }</div>
-            <div>title: { project.projectStart }</div>
-            <div>title: { project.projectEnd }</div> */}
+            <div>title: { project }</div>
         </div>
     );
 }
