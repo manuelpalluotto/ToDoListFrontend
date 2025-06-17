@@ -19,7 +19,6 @@ export default function Login() {
                 username,
                 password
             }
-            console.log(User);
             try {
                 await login(User.username, User.password);
                 toast('You are being logged in...');

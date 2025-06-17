@@ -42,7 +42,6 @@ export default function ShowProjects() {
 
     //dann muss ich das formattieren, denn FullCalendar erwartet ein gewisses Format
     const events = projects.map(project => {
-        console.log(`Creating event for project: ${project.id} - ${project.projectTitle} (${project.status})`);
         return {
         id: project.projectId,
         title: project.projectTitle,
@@ -52,7 +51,6 @@ export default function ShowProjects() {
         allDay: true
     }});
 
-    console.log('Final events array: ', events);
 
 
     //diese function wird immer ausgeführt, wenn ein datum angeklickt wird

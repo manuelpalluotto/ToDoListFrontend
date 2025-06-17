@@ -35,7 +35,6 @@ export default function Registerform() {
         if (password === confirmedPassword) {
 
             try {
-                console.log(User);
                 await createUser(User);
                 notifyRegisterSuccess();
                 router.push('/login');
