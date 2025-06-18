@@ -2,6 +2,7 @@
 import { getRoleByUsername, getUsername } from "@/lib/apiMethods";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import LogoutLink from "@/components/LogoutLink";
 
 export default function NavLinksBar() {
 
@@ -9,7 +10,7 @@ export default function NavLinksBar() {
     const [role, setRole] = useState('');
 
 
-    useEffect( () => {
+    useEffect(() => {
         const fetchUsername = async () => {
             try {
                 const response = await getUsername();
@@ -24,26 +25,31 @@ export default function NavLinksBar() {
 
     useEffect(() => {
         async function fetchRole(username) {
-        try {
-            const response = await getRoleByUsername(username);
-            setRole(response);
-            (response);
-        } catch (error) {
-            console.error(error);
+            try {
+                const response = await getRoleByUsername(username);
+                setRole(response);
+                (response);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        if (username) {
+            fetchRole(username);
         }
-    };
-    if (username) {
-        fetchRole(username);
-    }
     }, [username])
 
     return (
         <div className='navlinks-container'>
-            <div className='dashboard-container'><Link href='/dashboard'>Dashboard from { username }</Link></div>
-            <div className='projects-container'><Link href='/projects'>Your Projects with role { role }</Link></div>
-            <div className='all--tickets-container'><Link href='/tickets'>All Tickets</Link></div>
-            {role === 'ADMIN' && <div className='admin--area-container'><Link href='/admin'>Admin Area</Link></div>}
-            <div className='all--tickets-container'><Link href='/projects'>All Projects</Link></div>
+            <div className='top-container'>
+                <div className='dashboard-container'><Link href='/dashboard'>Dashboard from {username}</Link></div>
+                <div className='projects-container'><Link href='/projects'>Your Projects with role {role}</Link></div>
+                <div className='all--tickets-container'><Link href='/tickets'>All Tickets</Link></div>
+                {role === 'ADMIN' && <div className='admin--area-container'><Link href='/admin'>Admin Area</Link></div>}
+                <div className='all--tickets-container'><Link href='/projects'>All Projects</Link></div>
+            </div>
+            <div className='completely-right-container'>
+                <div className='all--tickets-container'><LogoutLink>Logout</LogoutLink></div>
+            </div>
         </div>
     );
 }

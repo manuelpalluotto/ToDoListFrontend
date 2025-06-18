@@ -19,11 +19,25 @@
     gap: 1rem;
     padding-inline: 1rem;
     color: var(--youtube-font);
+    justify-content: space-between;
 }
 
 .dashboard-container, .projects-container, .all--tickets-container, .admin--area-container{
     background-color: var(--youtube-gray);
     padding: 0.5rem;
     border-radius: 10px;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+/*#endregion*/
+/*#region logout*/
+.logout-button {
+    color: var(--youtube-font);
+    background-color: var(--youtube-gray);
+    border: none;
 }
 /*#endregion*/

@@ -89,3 +89,13 @@ export function convertedStatus(status) {
         const response = await apiClient.post('/projects/updateDate', ProjectUpdateDateDTO);
         return response;
     }
+
+    export async function deleteCookie() {
+        const response = await apiClient.post('/auth/logout');
+        return response;
+    }
+
+    export async function addTicket(NewProjectDTO) {
+        const response = await apiClient.post('/tickets/add', NewProjectDTO);
+        return response;
+    }

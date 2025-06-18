@@ -4,7 +4,7 @@ import '@/app/projects/projects.css';
 import ManuButton from '@/components/SubmitButton';
 import Navbar from "@/components/Navbar";
 import NavLinksBar from "@/components/NavLinksBar";
-import { convertedStatus, fetchProjects, getProjectById, updateDate } from "@/lib/apiMethods";
+import { addTicket, convertedStatus, fetchProjects, getProjectById, updateDate } from "@/lib/apiMethods";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import SubmitButton from '@/components/SubmitButton';
@@ -13,9 +13,15 @@ export default function ProjectDetail() {
     const params = useParams();
     const projectId = params.id;
     const [project, setProject] = useState([]);
-    const [isEditing, setEditing] = useState(false);
+    const [isEditingEndTime, setEditingEndTime] = useState(false);
+    const [isEditingTickets, setEditingTickets] = useState(false);
     const [projectEnd, setProjectEnd] = useState('');
+    const [projectTickets, setProjectTickets] = useState([]);
     const status = convertedStatus(project.status);
+
+    const [ticketTitle, setTicketTitle] = useState();
+    const [ticketStart, setTicketStart] = useState();
+    const [ticketEnd, setTicketEnd] = useState();
 
 
     useEffect(() => {
@@ -32,9 +38,17 @@ export default function ProjectDetail() {
 
     const sendData = async (ProjectUpdateDateDTO) => {
         try {
-            const response = await updateDate(ProjectUpdateDateDTO);
+            await updateDate(ProjectUpdateDateDTO);
         }
         catch (error) {
+            alert(error);
+        }
+    };
+
+    const sendNewTicketDTO = async (NewTicketDTO) => {
+        try {
+            await addTicket(NewProjectDTO);
+        } catch (error) {
             alert(error);
         }
     };
@@ -60,11 +74,11 @@ export default function ProjectDetail() {
                     <div>starttime: {project.projectStart}</div>
                 </div>
 
-                {!isEditing ?
+                {!isEditingEndTime ?
                     (
                         <div className='endtime-container'>
                             <div>endtime: {project.projectEnd}</div>
-                            <button onClick={() => setEditing(true)}>Edit</button>
+                            <button onClick={() => setEditingEndTime(true)}>Edit</button>
                         </div>
                     )
                     :
@@ -86,22 +100,65 @@ export default function ProjectDetail() {
                                     required
                                 />
                                 <SubmitButton>Submit</SubmitButton>
-                                <button onClick={() => setEditing(false)}>Cancel</button>
+                                <button onClick={() => setEditingEndTime(false)}>Cancel</button>
                             </form>
                         </div>
                     )}
 
+                {!isEditingTickets ? (
+                    <div className='ticket-container'>Tickets:
+                        {project.projectTickets && projectTickets.map((ticket) => (
+                            <div key={ticket.id}>
+                                {ticket.name}
+                            </div>
+                        ))}
+                        <button onClick={() => setEditingTickets(true)}>Edit</button>
+                    </div>
+                )
+                    :
+                    (
+                        <div>
+                            <form onSubmit={(e) => {
+                                const NewTicketDTO = {
+                                    ticketTitle,
+                                    ticketStart,
+                                    ticketEnd,
+                                    project_ids : projectId
+                                };
+                                sendNewTicketDTO(NewTicketDTO); 
+                            }}>
+                                <input
+                                    id='ticketTitle'
+                                    type='text'
+                                    placeholer='Ticket-Title'
+                                    value={projectTickets}
+                                    onChange={(e) => setProjectTickets(e.target.value)}
+                                    required
+                                />
+                                <input
+                                id='ticketStart'
+                                type='date'
+                                placeholder='Ticket-Start'
+                                value={ticketStart}
+                                onChange={(e) => setTicketStart(e.target.value)}
+                                required
+                                />
+                                <input
+                                id='ticketEnd'
+                                type='date'
+                                placeholder='Ticket-End'
+                                value={ticketEnd}
+                                onChange={(e) => setTicketEnd(e.target.value)}
+                                required
+                                />
+                                <SubmitButton>Submit</SubmitButton>
+                                <button onClick={() => setEditingTickets(false)}>Cancel</button>
+                            </form>
+                        </div>
+                    )
+                }
 
 
-                <div className='ticket-container'>
-                    <div>tickets: {project.tickets}</div>
-                    <SubmitButton>Add Ticket/s</SubmitButton>
-                </div>
-
-                <div className='user-container'>
-                    <div>users: {project.users}</div>
-                    <ManuButton>Add User/s</ManuButton>
-                </div>
 
             </div>
         </>
